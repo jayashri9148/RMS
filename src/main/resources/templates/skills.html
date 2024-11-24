@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Skill Management</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<header>
+  <h1>Skill Management</h1>
+</header>
+<main>
+  <a href="/skill">Add New Skills</a>
+  <section class="content">
+    <h2>Add New Skill</h2>
+    <form th:action="@{/saveSkills}" method="post">
+      <label for="skillName">Skill Name:</label>
+      <input type="text" id="skillName" name="skillName" placeholder="Enter skill name" required>
+      <button type="submit">Add Skill</button>
+    </form>
+
+    <h2>Existing Skills</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Skill Name</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="skill : ${skillsets}">
+        <td th:text="${skill.id}"></td>
+        <td th:text="${skill.skillName}"></td>
+        <td>
+          <!-- Delete Button -->
+
+           <form th:action="@{/delete/{id}(id=${skill.id})}" method="post">
+             <button type="submit">Delete</button>
+           </form>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>

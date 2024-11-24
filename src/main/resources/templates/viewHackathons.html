@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Hackathons - Innovera Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f4c3; /* Light green background for a fresh look */
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          flex-direction: column;
+        }
+
+        header {
+          background-color: #8bc34a; /* Darker green header for contrast */
+          color: white;
+          padding: 1rem;
+          text-align: center;
+          width: 100%;
+          box-sizing: border-box;
+          position: fixed;
+          top: 0;
+        }
+
+        main {
+          margin: 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 90px; /* Adjust to move below the header */
+        }
+
+        h2 {
+          color: #4a5b23; /* Darker green color for better contrast */
+        }
+
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 20px;
+          padding: 20px;
+        }
+
+        .cards {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: center;
+        }
+
+        .card {
+          background-color: #f4f4f4;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          flex: 1;
+          max-width: 300px;
+          text-align: center;
+        }
+
+        .card img {
+          height: 200px;
+          object-fit: cover;
+          border-radius: 8px 8px 0 0;
+        }
+
+        .card-title {
+          margin: 15px 0 10px 0;
+          color: #4a5b23; /* Darker green color for better contrast */
+        }
+
+        .card-text {
+          color: #333;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+            <img src="/images/logo.png" alt="Innovera Solutions Logo" width="120" height="120" class="d-inline-block align-text-top">
+        </a>
+        <div class="mx-auto text-center">
+            <h1 class="navbar-text">Innovera Solutions</h1>
+        </div>
+    </nav>
+</header>
+<main>
+    <h2>Upcoming Hackathons</h2>
+    <div class="cards">
+        <div th:each="hackathon : ${hackathons}" class="card">
+<!--            <img th:src="@{${hackathon.posterUrl}}" class="card-img-top" alt="Hackathon Poster">-->
+            <div class="card-body">
+                <h5 class="card-title" th:text="${hackathon.title}"></h5>
+                <p class="card-text" th:text="${hackathon.description}"></p>
+                <p class="card-text"><strong>Start Date:</strong> <span th:text="${hackathon.startDate}"></span></p>
+                <p class="card-text"><strong>End Date:</strong> <span th:text="${hackathon.endDate}"></span></p>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="mt-5">
+    <p>Contact Information | Terms of Service | Privacy Policy</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlI/7BxM+XIkt8fbgJ6ubFjef2Nh4FOWzF4o0iUc3F86dIHNdT5M6g9yMAV" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWi8rqbaS2G7A4Cxby5xYj0JOso4mYSwqq0gFamkxpb8uu5quHf5rweHuF" crossorigin="anonymous"></script>
+</body>
+</html>
